@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Xoa ki luat</title>
+</head>
+<body>
+<h1>Xoa ki luat</h1>
+<h2>Are you sure?</h2>
+<p>
+    <a href="/kiluats">kho nhan vien</a>
+</p>
+<form th:action="@{/delete-kiluat}" th:object="${kiluat}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>hoten:</td>
+            <td th:text="${kiluat.get().loai}"></td>
+        </tr>
+        <tr>
+            <td>ngaysinh:</td>
+            <td th:text="${kiluat.get().lido}"></td>
+        </tr>
+        <tr>
+            <td>capdo:</td>
+            <td th:text="${kiluat.get().ngayghinhan}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Xoa ki luat"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

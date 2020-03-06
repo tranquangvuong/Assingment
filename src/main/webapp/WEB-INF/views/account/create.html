@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Them Account</title>
+</head>
+<body>
+<h1>Them Account</h1>
+<p>
+    <a href="/accounts">kho phong ban</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-account}" th:object="${account}" method="post">
+    <table>
+        <tr>
+            <td>fullname:</td>
+            <td><input type="text" th:field="*{fullname}"/></td>
+            <td th:if="${#fields.hasErrors('fullname')}" th:errors="*{fullname}">fullname Error</td>
+        </tr>
+        <tr>
+            <td>password:</td>
+            <td><input type="text" th:field="*{password}"/></td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password Error</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="them account"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

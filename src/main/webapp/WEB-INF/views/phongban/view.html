@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Xem phong ban</title>
+</head>
+<body>
+<h1>Xem phong ban: <span th:text="${phongban.get().tenphongban}"></span></h1>
+<a href="/phongbans">Phongban list</a>
+<table border="1">
+    <tr>
+        <th>hoten</th>
+        <th>ngaysinh</th>
+        <th>capdo</th>
+    </tr>
+    <th:block th:each="nhanvien : ${nhanviens}">
+        <tr>
+            <td th:text="${nhanvien.getHoten()}"></td>
+            <td th:text="${nhanvien.getNgaysinh()}"></td>
+            <td th:text="${nhanvien.getCapdo()}"></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kho ki luat</title>
+</head>
+<body>
+<a href="/create-kiluat">Them ki luat moi</a>
+<h1>Ki luat</h1>
+<table border="1">
+    <tr>
+        <th>loai</th>
+        <th>lido</th>
+        <th>ngayghinhan</th>
+        <th>Nhanvien</th>
+        <th>Phongban</th>
+    </tr>
+    <th:block th:each="kiluat : ${kiluats}">
+        <tr>
+            <td th:text="${kiluat.loai}"></td>
+            <td th:text="${kiluat.lido}"></td>
+            <td th:text="${kiluat.ngayghinhan}"></td>
+            <td th:text="${kiluat.nhanvien.hoten}"></td>
+            <td th:text="${kiluat.phongban.tenphongban}"></td>
+            <td><a th:href="@{/delete-kiluat/__${kiluat.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

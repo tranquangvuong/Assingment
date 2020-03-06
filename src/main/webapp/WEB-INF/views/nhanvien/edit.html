@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa nhan vien</title>
+</head>
+<body>
+<h1>Sua nhan vien</h1>
+<p>
+    <a href="/nhanviens">kho nhan vien</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-nhanvien}" th:object="${nhanvien}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>hoten:</td>
+            <td><input type="text" th:field="*{hoten}"/></td>
+        </tr>
+        <tr>
+            <td>ngaysinh:</td>
+            <td><input type="text" th:field="*{ngaysinh}"/></td>
+        </tr>
+        <tr>
+            <td>capdo:</td>
+            <td><input type="text" th:field="*{capdo}"/></td>
+        </tr>
+        <tr>
+            <td>Phongban:</td>
+            <td>
+                <select name="phongban">
+                    <option th:each="p : ${phongbans}"
+                            th:value="${p.getId()}"
+                            th:text="${p.getTenphongban()}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Sua nhan vien"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

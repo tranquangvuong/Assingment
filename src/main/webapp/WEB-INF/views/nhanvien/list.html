@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kho nhan vien</title>
+</head>
+<body>
+<a href="/create-nhanvien">Them nhan vien moi</a>
+<h1>Nhan vien</h1>
+<table border="1">
+    <tr>
+        <th>hoten</th>
+        <th>ngaysinh</th>
+        <th>capdo</th>
+        <td>anh</td>
+        <th>Phongban</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="nhanvien : ${nhanviens}">
+        <tr>
+            <td th:text="${nhanvien.hoten}"></td>
+            <td th:text="${nhanvien.ngaysinh}"></td>
+            <td th:text="${nhanvien.capdo}"></td>
+            <td><img rsc="/resources/img" th:src="@{nhanvien.anh.imgSrc}"></td>
+            <td th:text="${nhanvien.phongban.tenphongban}"></td>
+            <td><a th:href="@{/edit-nhanvien/__${nhanvien.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-nhanvien/__${nhanvien.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

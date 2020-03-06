@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Xóa Phong ban</title>
+</head>
+<body>
+<h1>Xóa phong ban</h1>
+<h2>Are you sure?</h2>
+<p>
+    <a href="/phongbans">phong ban Kho</a>
+</p>
+<form th:action="@{/delete-phongban}" th:object="${phongban}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>tenphongban:</td>
+            <td th:text="${phongban.get().tenphongban}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Xoa phong ban"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

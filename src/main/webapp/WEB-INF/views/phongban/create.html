@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Them phong ban</title>
+</head>
+<body>
+<h1>Them phong ban</h1>
+<p>
+    <a href="/phongbans">kho phong ban</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-phongban}" th:object="${phongban}" method="post">
+    <table>
+        <tr>
+            <td>tenphongban:</td>
+            <td><input type="text" th:field="*{tenphongban}"/></td>
+            <td th:if="${#fields.hasErrors('tenphongban')}" th:errors="*{tenphongban}">tenpongban Error</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="them phong ban"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

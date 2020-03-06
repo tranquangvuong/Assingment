@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Phong ban</title>
+</head>
+<body>
+<a href="/create-phongban">Them phong ban moi</a>
+<h1>Phong ban</h1>
+<table border="1">
+    <tr>
+        <th>Tenphongban</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="phongban: ${phongbans}">
+        <tr>
+            <td><a th:href="@{/view-phongban/__${phongban.id}__}" th:text="${phongban.tenphongban}"></a></td>
+            <td><a th:href="@{/edit-phongban/__${phongban.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-phongban/__${phongban.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

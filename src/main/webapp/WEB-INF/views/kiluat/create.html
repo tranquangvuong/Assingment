@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Them khi luat</title>
+</head>
+<body>
+<h1>Them  ki luat</h1>
+<p>
+    <a href="/kiluats">ki luat kho</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-kiluat}" th:object="${kiluat}" method="post">
+    <table>
+        <tr>
+            <td>loai:</td>
+            <td><input type="text" th:field="*{loai}"/></td>
+            <td th:if="${#fields.hasErrors('loai')}" th:errors="*{loai}">lido Error</td>
+        </tr>
+        <tr>
+            <td>li do:</td>
+            <td><input type="text" th:field="*{lido}"/></td>
+            <td th:if="${#fields.hasErrors('lido')}" th:errors="*{lido}">lido Error</td>
+        </tr>
+        <tr>
+            <td>ngay ghi nhan:</td>
+            <td><input type="text" th:field="*{ngayghinhan}"/></td>
+            <td th:if="${#fields.hasErrors('ngayghinhan')}" th:errors="*{ngayghinhan}">Name Error</td>
+        </tr>
+        <tr>
+            <td>nhan vien:</td>
+            <td>
+                <select th:field="*{nhanvien}">
+                    <option th:each="p : ${nhanviens}" th:value="${p.id}" th:text="${p.hoten}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Them ki luat"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

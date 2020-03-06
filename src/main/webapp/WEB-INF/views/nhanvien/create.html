@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>them nhan vien</title>
+</head>
+<body>
+<h1>Them nhan vien</h1>
+<p>
+    <a href="/nhanviens">Kho nhan vien</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+
+<form  th:action="@{/create-nhanvien}" th:object="${nhanvien}" method="post">
+    <table>
+        <tr>
+            <td>ho ten:</td>
+            <td><input type="text" th:field="*{hoten}" id="v"/></td>
+            <td th:if="${#fields.hasErrors('hoten')}" th:errors="*{hoten}">Name Error</td>
+        </tr>
+        <tr>
+            <td>ngay sinh:</td>
+            <td><input type="date" th:field="*{ngaysinh}"/></td>
+            <td th:if="${#fields.hasErrors('ngaysinh')}" th:errors="*{ngaysinh}">bird Error</td>
+        </tr>
+        <tr>
+            <td>cap do:</td>
+            <td><input type="text" th:field="*{capdo}"/></td>
+            <td th:if="${#fields.hasErrors('capdo')}" th:errors="*{capdo}">caodo Error</td>
+        </tr>
+        <tr>
+        <tr>
+            <td>cap do:</td>
+            <td><input type="file" th:field="*{anh}"/></td>
+        </tr>
+        <tr>
+        <tr>
+            <td>phong ban:</td>
+            <td>
+                <select th:field="*{phongban}">
+                    <option th:each="p : ${phongbans}" th:value="${p.id}" th:text="${p.tenphongban}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="them than vien"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
